@@ -155,7 +155,7 @@ fn main() -> Result<()> {
 
     let bytecode = contract.bytecode.original_byte_slice();
 
-    let spec_id = if cli.eof { SpecId::PRAGUE_EOF } else { cli.spec_id.into() };
+    let spec_id = if cli.eof { SpecId::PRAGUE } else { cli.spec_id.into() };
     if !stack_input.is_empty() {
         compiler.inspect_stack_length(true);
     }
@@ -300,7 +300,6 @@ pub enum SpecIdValueEnum {
     SHANGHAI,
     CANCUN,
     PRAGUE,
-    PRAGUE_EOF,
     LATEST,
 }
 
@@ -326,7 +325,6 @@ impl From<SpecIdValueEnum> for SpecId {
             SpecIdValueEnum::SHANGHAI => Self::SHANGHAI,
             SpecIdValueEnum::CANCUN => Self::CANCUN,
             SpecIdValueEnum::PRAGUE => Self::PRAGUE,
-            SpecIdValueEnum::PRAGUE_EOF => Self::PRAGUE_EOF,
             SpecIdValueEnum::LATEST => Self::LATEST,
         }
     }
